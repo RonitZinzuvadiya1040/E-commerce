@@ -1,0 +1,40 @@
+.fixed-top {
+    z-index: absolute;
+}
+
+.dropdown-menu {
+    min-width: 200px;
+    right: 0;
+    left: auto;
+    overflow-x: auto;
+}
+
+.navbar-nav {
+    overflow: visible;
+}
+
+.navbar-nav .nav-link {
+    font-size: 14px;
+}
+
+@media (max-width: 768px) {
+    .dropdown-menu {
+        position: static;
+        width: 100%;
+        box-shadow: none;
+    }
+
+    .navbar-nav .nav-link {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 576px) {
+    .navbar-nav .nav-link {
+        font-size: 10px;
+    }
+}
+
+body {
+    padding-top: 56px;
+}

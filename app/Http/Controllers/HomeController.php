@@ -58,4 +58,9 @@ class HomeController extends Controller
 
         return view('home', compact('categories', 'products', 'selectedCategory'));
     }
+
+    public function showProductDetails($id){
+        $product = Product::with('brand', 'category')->findOrFail($id);
+        return view('product.details', compact('product'));
+    }
 }

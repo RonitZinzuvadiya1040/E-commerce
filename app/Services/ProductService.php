@@ -7,6 +7,17 @@ use Illuminate\Support\Facades\Storage;
 
 class ProductService
 {
+    public function getAllProductsWithSearch(Request $request)
+    {
+        $search = $request->input('search');
+        $query = Product::query();
+
+        if ($search) {
+            $query->where('name', 'like', "%{$search}%")->orWhere('slug', 'like', "%{$search}%")->orWhere('description', 'like', "%{$search}%");
+        }
+        return $query->whereNull('deleted_at')->paginate(10);
+    }
+
     public function getAllProducts()
     {
         return Product::with(['category', 'brand'])->get();

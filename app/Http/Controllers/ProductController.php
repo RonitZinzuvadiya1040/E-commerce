@@ -17,9 +17,9 @@ class ProductController extends Controller
         $this->productService = $productService;
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $products = $this->productService->getAllProducts();
+        $products = $this->productService->getAllProductsWithSearch($request);
         return view('product.index', compact('products'));
     }
 

@@ -12,7 +12,7 @@
             </div>
 
             <!-- Search Form -->
-            <form action="{{ route('admin.brand.store') }}" method="POST" class="mb-4">
+            <form action="{{ route('admin.brand.index') }}" method="GET" class="mb-4">
                 <div class="input-group">
                     <input type="text" class="form-control" name="search" placeholder="Search Brands..." value="{{ request('search') }}">
                     <div class="input-group-append">
@@ -74,6 +74,10 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        <!-- Pagination -->
+                        <div class="d-flex justify-content-center">
+                            {{ $brands->links('pagination.custom-pagination') }}
+                        </div>
                     @endif
                 </div>
             </div>
@@ -81,4 +85,3 @@
     </div>
 </div>
 @endsection
-

@@ -13,7 +13,7 @@ class CategoryService
         $query = Category::query();
 
         if ($search) {
-            $query->where('name', 'like', "%{$search}%")->orWhere('description', 'like', "%{$search}%");
+            $query->where('name', 'like', "%{$search}%")->orWhere('slug', 'like', "%{$search}%")->orWhere('description', 'like', "%{$search}%");
         }
 
         return $query->with('parentCategory')->whereNull('deleted_at')->paginate(10);

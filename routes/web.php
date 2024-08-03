@@ -9,7 +9,6 @@ use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Frontend\ProductController as FrontendProductController;
-use App\Http\Controllers\Frontend\FrontProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -139,4 +138,5 @@ Route::post('/email/verification-notification', function (Request $request) {
 ### ------------------------------------------------------ Frontend routes ------------------------------------------------------------- ###
 Route::middleware(['auth', 'verified', 'user-access:user'])->group(function () {
     Route::get('/category/{id}', [HomeController::class, 'showCategoryProducts'])->name('category.products');
+    Route::get('/product/{id}', [FrontendProductController::class, 'showProductDetails'])->name('product.details');
 });

@@ -41,11 +41,14 @@
                 @forelse($products as $product)
                     <div class="col-md-4 mb-4">
                         <div class="card h-100">
-                            <img src="{{ asset('storage/product/' . $product->image) }}" class="card-img-top" alt="{{ $product->name }}">
+                            <a href="{{ route('product.details', $product->id) }}">
+                                <img src="{{ asset('storage/product/' . $product->image) }}" class="card-img-top" alt="{{ $product->name }}">
+                            </a>
                             <div class="card-body">
                                 <h5 class="card-title">{{ $product->name }}</h5>
                                 <p class="card-text">{{ $product->description }}</p>
                                 <p class="card-text">{{ $product->price }}</p>
+                                <button class="btn btn-add-to-cart">Add to Cart</button>
                             </div>
                         </div>
                     </div>
@@ -58,6 +61,25 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('styles')
+<style>
+    .btn-add-to-cart {
+        background-color: #ff9900;
+        color: white;
+        border: none;
+        border-radius: 20px;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-add-to-cart:hover {
+        background-color: #e68a00;
+    }
+</style>
 @endsection
 
 @section('scripts')

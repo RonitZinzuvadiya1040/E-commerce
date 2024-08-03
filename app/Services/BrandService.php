@@ -3,11 +3,24 @@
 namespace App\Services;
 
 use App\Models\Brand;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class BrandService
 {
+    public function getAllBrandsWithSearch(Request $request)
+    {
+        $search = $request->input('search');
+        $query = Brand::query();
+
+        if ($search) {
+            $query->where('name', 'like', "%{$search}%")->orWhere('slug', 'like', "%{$search}%");
+        }
+
+        return $query->whereNull('deleted_at')->paginate(10);
+    }
+
     public function storeBrand($request)
     {
         $imageName = $this->handleImageUpload($request);

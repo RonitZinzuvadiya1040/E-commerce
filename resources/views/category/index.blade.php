@@ -12,9 +12,9 @@
             </div>
 
             <!-- Search Form -->
-            <form action="{{ route('admin.category.store') }}" method="POST" class="mb-4">
+            <form action="{{ route('admin.category.index') }}" method="GET" class="mb-4">
                 <div class="input-group">
-                    <input type="text" class="form-control" name="search" placeholder="Search Categories..." value="{{ request('search') }}">
+                    <input type="text" class="form-control" name="search" placeholder="Search Category..." value="{{ request('search') }}">
                     <div class="input-group-append">
                         <button class="btn btn-outline-secondary" type="submit">
                             <i class="fas fa-search"></i> {{ __('Search') }}
@@ -76,7 +76,9 @@
                         </table>
 
                         <!-- Pagination -->
-                        {{ $categories->links() }}
+                        <div class="d-flex justify-content-center">
+                            {{ $categories->links('pagination.custom-pagination') }}
+                        </div>
                     @endif
                 </div>
             </div>
@@ -84,4 +86,3 @@
     </div>
 </div>
 @endsection
-

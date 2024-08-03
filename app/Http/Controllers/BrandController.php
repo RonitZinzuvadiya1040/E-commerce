@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Services\BrandService;
 use App\Http\Requests\Brand\AddBrandRequest;
 use App\Http\Requests\Brand\UpdateBrandRequest;
@@ -16,9 +17,9 @@ class BrandController extends Controller
         $this->brandService = $brandService;
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $brands = Brand::whereNull('deleted_at')->get();
+        $brands = $this->brandService->getAllBrandsWithSearch($request);
         return view('brand.index', compact('brands'));
     }
 

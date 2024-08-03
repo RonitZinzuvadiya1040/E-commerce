@@ -46,7 +46,7 @@
 </head>
 <body>
     <div id="video-container">
-        <video part="video" crossorigin="" playsinline="" muted="" src="{{ Storage::url('public/video/homepage.mp4') }}" preload="metadata" autoplay loop></video>
+        <video part="video" crossorigin="" playsinline="" muted="" oncontextmenu="return false;" src="{{ Storage::url('public/video/homepage.mp4') }}" preload="metadata" autoplay loop></video>
     </div>
     @if (Route::has('login'))
         <div class="auth-container">
